@@ -10,13 +10,15 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.9.10",
     "native-base": "^3.4.23",
     "react": "18.1.0",
     "react-hook-form": "^7.40.0",
     "react-native": "0.70.6",
     "react-native-feather": "^1.1.2",
     "react-native-safe-area-context": "3.3.2",
-    "react-native-svg": "12.1.1"
+    "react-native-svg": "12.1.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

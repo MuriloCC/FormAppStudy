@@ -44,12 +44,17 @@ export const CustomInput = ({
       marginTop={marginTop}>
       {label && <FormControl.Label>{label}</FormControl.Label>}
       <Input
+        textContentType="oneTimeCode"
         variant="filled"
         bg="gray.200"
         onChangeText={onChangeText}
         _focus={{
           borderWidth: 2,
           borderColor: 'blue.400',
+        }}
+        _invalid={{
+          borderColor: 'red.500',
+          borderWidth: 2,
         }}
         placeholder={placeholder && placeholder}
         h={12}

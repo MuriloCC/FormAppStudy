@@ -1,8 +1,10 @@
+import {yupResolver} from '@hookform/resolvers/yup';
 import {Center, Heading, KeyboardAvoidingView, VStack} from 'native-base';
 import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {Keyboard, Platform, TouchableWithoutFeedback} from 'react-native';
 import {Lock, Mail, User} from 'react-native-feather';
+import * as yup from 'yup';
 import {CustomButton} from '../../components/CustomButton/CustomButton';
 import {CustomInput} from '../../components/CustomInput/CustomInput';
 
@@ -13,12 +15,18 @@ type FormType = {
   confirm_password: string;
 };
 
+const signupValidatorSchema = yup.object<FormType>({
+  name: yup.string().required('Campo obrigatório!'),
+});
+
 const FormPage = () => {
   const {
     control,
     handleSubmit,
     formState: {errors},
-  } = useForm<FormType>();
+  } = useForm<FormType>({
+    resolver: yupResolver(signupValidatorSchema),
+  });
 
   const handleSignup = (formData: FormType) => {
     console.log(formData);
@@ -34,9 +42,6 @@ const FormPage = () => {
 
           <Center flex={1} w="full">
             <Controller
-              rules={{
-                required: 'O campo é obrigatório',
-              }}
               control={control}
               name="name"
               render={({field: {onChange}}) => (
